@@ -27,6 +27,42 @@ public class Maze{
 
     public Maze(String filename) throws FileNotFoundException{
         //COMPLETE CONSTRUCTOR
+        ReadFile(filename);
+        animate = false;
+        System.out.println(this);
+    }
+
+    private void ReadFile(String filename) throws FileNotFoundException{
+      File f = new File(filename);
+
+      Scanner infLen = new Scanner(f);
+      int rowLen = 0;
+      int colLen = 0;
+      while (infLen.hasNextLine()){
+        rowLen += 1;
+        colLen = infLen.nextLine().length();
+      }
+      maze = new char[rowLen][colLen];
+      Scanner inf = new Scanner(f);
+      int row = 0;
+      while (inf.hasNextLine()){
+        String line = inf.nextLine();
+        for (int i = 0; i < line.length(); i++){
+          maze[row][i] = line.charAt(i);
+        }
+        row++;
+      }
+    }
+
+    public String toString(){
+      String out = "";
+      for (char[] y : maze){
+        for (char i : y){
+          out += i + " ";
+        }
+        out += "\n";
+      }
+      return out;
     }
 
 
@@ -60,7 +96,25 @@ public class Maze{
 
       Note the helper function has the same name, but different parameters.
       Since the constructor exits when the file is not found or is missing an E or S, we can assume it exists.
+File f = new File("Maze1.txt");
 
+        Scanner infLen = new Scanner(f);
+        int rowLen = 0;
+        int colLen = 0;
+        while (infLen.hasNextLine()){
+          rowLen += 1;
+          colLen = infLen.nextLine().length();
+        }
+        maze = new char[rowLen][colLen];
+        Scanner inf = new Scanner(f);
+        int row = 0;
+        while (inf.hasNextLine()){
+          String line = inf.nextLine();
+          for (int i = 0; i < line.length(); i++){
+            maze[row][i] = line.charAt(i);
+          }
+          row++;
+        }
     */
     public int solve(){
 
