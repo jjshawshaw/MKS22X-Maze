@@ -4,9 +4,9 @@ public class Driver{
       String filename = "data1.dat";
       try{
         Maze f;
-        f = new Maze(filename);//true animates the maze.
-
-        f.setAnimate(true);
+        f = new Maze(filename);//true animates the maz
+        System.out.println(f);
+        f.setAnimate(false);
         f.solve();
         System.out.println(f);
       }catch(FileNotFoundException e){

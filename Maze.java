@@ -29,7 +29,7 @@ public class Maze{
         //COMPLETE CONSTRUCTOR
         ReadFile(filename);
         animate = false;
-        System.out.println(this);
+      //  System.out.println(this);
     }
 
     private void ReadFile(String filename) throws FileNotFoundException{
@@ -58,13 +58,12 @@ public class Maze{
       String out = "";
       for (char[] y : maze){
         for (char i : y){
-          out += i + " ";
+          out += i;
         }
         out += "\n";
       }
       return out;
     }
-
 
     private void wait(int millis){
          try {
@@ -81,7 +80,6 @@ public class Maze{
 
     }
 
-
     public void clearTerminal(){
 
         //erase terminal, go to top left of screen.
@@ -96,38 +94,29 @@ public class Maze{
 
       Note the helper function has the same name, but different parameters.
       Since the constructor exits when the file is not found or is missing an E or S, we can assume it exists.
-File f = new File("Maze1.txt");
-
-        Scanner infLen = new Scanner(f);
-        int rowLen = 0;
-        int colLen = 0;
-        while (infLen.hasNextLine()){
-          rowLen += 1;
-          colLen = infLen.nextLine().length();
-        }
-        maze = new char[rowLen][colLen];
-        Scanner inf = new Scanner(f);
-        int row = 0;
-        while (inf.hasNextLine()){
-          String line = inf.nextLine();
-          for (int i = 0; i < line.length(); i++){
-            maze[row][i] = line.charAt(i);
-          }
-          row++;
-        }
     */
     public int solve(){
 
             //find the location of the S.
-
+            int sX = 0;
+            int sY = 0;
+            for (int y = 0; y < maze.length; y++){
+              for (int x = 0; x < maze[0].length; x++){
+                if (maze[y][x] == 'S'){
+                  sY = y;
+                  sX = x;
+              }
+            }
+          }
 
             //erase the S
 
+              maze[sY][sX] = ' ';
 
             //and start solving at the location of the s.
 
             //return solve(???,???);
-            return 0;
+            return solve(sY, sX);
     }
 
     /*
