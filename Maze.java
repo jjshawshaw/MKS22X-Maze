@@ -53,6 +53,15 @@ public class Maze{
         }
         row++;
       }
+      int sn = 0;
+      int en = 0;
+      for (int y = 0; y < maze.length; y++){
+        for (int x = 0; x < maze[0].length; x++){
+          if (maze[y][x] == 'S') sn++;
+          if (maze[y][x] == 'E') en++;
+      }
+    }
+    if (sn != 1 || en != 1) throw new IllegalStateException();
     }
 
     public String toString(){

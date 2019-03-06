@@ -1,7 +1,7 @@
 import java.io.*;
 public class Driver{
     public static void main(String[]args){
-      String filename = "data1.dat";
+      String filename = "Maze1.txt";
       try{
         Maze f;
         f = new Maze(filename);//true animates the maz
