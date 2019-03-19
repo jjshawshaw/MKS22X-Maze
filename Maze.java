@@ -6,6 +6,7 @@ public class Maze{
 
     private char[][]maze;
     private boolean animate;//false by default
+    private boolean solved;
 
     /*Constructor loads a maze text file, and sets animate to false by default.
 
@@ -52,6 +53,15 @@ public class Maze{
         }
         row++;
       }
+      int sn = 0;
+      int en = 0;
+      for (int y = 0; y < maze.length; y++){
+        for (int x = 0; x < maze[0].length; x++){
+          if (maze[y][x] == 'S') sn++;
+          if (maze[y][x] == 'E') en++;
+      }
+    }
+    if (sn != 1 || en != 1) throw new IllegalStateException();
     }
 
     public String toString(){
@@ -163,7 +173,6 @@ public class Maze{
 
 
         if (maze[row][col] == 'E') return num;
-          if (maze[row][col] == '.') return 0;
         else{
           int[][] moves = new int[][]{
             {0, 1},
@@ -171,16 +180,16 @@ public class Maze{
             {1, 0},
             {-1, 0}
           };
-          boolean stuck = true;
           for (int[] i : moves){
             if (step(row + i[0], col + i[1])){
-              stuck = false;
-              return solve(row + i[0], col + i[1], num + 1);
+              int n = solve(row + i[0], col + i[1], num + 1);
+              if (n != -1) return n;
             }
           }
           maze[row][col] = '.';
+          num -= 1;
         }
-        return 0; //so it compiles
+        return -1; //so it compiles
     }
 
 
