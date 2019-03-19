@@ -111,7 +111,7 @@ public class Maze{
 
             //erase the S
 
-              maze[sY][sX] = ' ';
+              maze[sY][sX] = '@';
 
             //and start solving at the location of the s.
 
@@ -156,7 +156,7 @@ public class Maze{
             clearTerminal();
             System.out.println(this);
 
-            wait(20);
+            wait(200);
         }
 
         //COMPLETE SOLVE
